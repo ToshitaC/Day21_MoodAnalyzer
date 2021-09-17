@@ -1,26 +1,18 @@
 package com.bridgelabz;
 
 public class MoodAnalyzer {
-    //TC1.1 : Given "I am in Sad Mood" message Should Return SAD
-    //TC1.2 : Given "I am in Any Mood" message Should Return HAPPY
-    private String message;
-    public String analyzeMood(String mood) {
-            try {
-                if(message.contains("sad"))
-                    return "SAD";
-                else if(message.contains("any"))
-                    return "HAPPY";
-            } catch (NullPointerException e) {
-                return "HAPPY";
-            }
-        return mood;
-    }
-    //Default Constructor
-    public MoodAnalyzer() {
+    public static String analyseMood(String message) throws MoodAnalysisException {
 
-    }
-    // Parameterized Constructor
-    public MoodAnalyzer(String message) {
-        this.message = message;
+        try {
+            if (message.contains("any") || message.contains("ANY") || message.contains("Any") || message.contains("happy") || message.contains("HAPPY") || message.contains("Happy")) {
+                return "HAPPY";
+            } else if (message.contains("SAD") || message.contains("Sad") || message.contains("sad")) {
+                return "SAD";
+            } else
+                return "HAPPY";
+        } catch (NullPointerException Exception) {
+            throw new MoodAnalysisException("Empty Mood");
+        }
+
     }
 }
