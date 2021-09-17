@@ -5,10 +5,14 @@ public class MoodAnalyzer {
     //TC1.2 : Given "I am in Any Mood" message Should Return HAPPY
     private String message;
     public String analyzeMood(String mood) {
-        if(message.contains("sad"))
-            return "SAD";
-        else if(message.contains("any"))
-            return "HAPPY";
+            try {
+                if(message.contains("sad"))
+                    return "SAD";
+                else if(message.contains("any"))
+                    return "HAPPY";
+            } catch (NullPointerException e) {
+                return "HAPPY";
+            }
         return mood;
     }
     //Default Constructor
